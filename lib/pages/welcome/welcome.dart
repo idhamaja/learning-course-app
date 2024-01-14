@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:learning_course_app/common/values/colors.dart';
 import 'package:learning_course_app/pages/welcome/bloc/welcome_blocs.dart';
 import 'package:learning_course_app/pages/welcome/bloc/welcome_events.dart';
 import 'package:learning_course_app/pages/welcome/bloc/welcome_states.dart';
@@ -76,8 +77,8 @@ class _WelcomePageState extends State<WelcomePage> {
                       dotsCount: 3,
                       mainAxisAlignment: MainAxisAlignment.center,
                       decorator: DotsDecorator(
-                          color: Colors.grey,
-                          activeColor: Colors.blue,
+                          color: AppColors.primaryThreeElementText,
+                          activeColor: AppColors.primaryElement,
                           size: const Size.square(8.0),
                           activeSize: const Size(18.0, 8.0),
                           activeShape: RoundedRectangleBorder(
@@ -116,7 +117,7 @@ class _WelcomePageState extends State<WelcomePage> {
         Text(
           title,
           style: GoogleFonts.poppins(
-            color: Colors.black,
+            color: AppColors.primaryText,
             fontSize: 24.sp,
             fontWeight: FontWeight.w500,
           ),
@@ -132,7 +133,7 @@ class _WelcomePageState extends State<WelcomePage> {
           child: Text(
             subTitle,
             style: GoogleFonts.poppins(
-              color: Colors.black.withOpacity(0.5),
+              color: AppColors.primarySecondaryElementText,
               fontSize: 14.sp,
               fontWeight: FontWeight.w500,
             ),
@@ -166,11 +167,9 @@ class _WelcomePageState extends State<WelcomePage> {
             width: 325.w,
             height: 50.h,
             decoration: BoxDecoration(
-                color: Colors.blue,
+                color: AppColors.primaryElement,
                 borderRadius: BorderRadius.all(
-                  Radius.circular(
-                    15.w,
-                  ),
+                  Radius.circular(15.w),
                 ),
                 boxShadow: [
                   BoxShadow(
