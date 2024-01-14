@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:learning_course_app/main.dart';
 import 'package:learning_course_app/pages/welcome/bloc/welcome_blocs.dart';
 import 'package:learning_course_app/pages/welcome/bloc/welcome_events.dart';
 import 'package:learning_course_app/pages/welcome/bloc/welcome_states.dart';
@@ -155,7 +154,7 @@ class _WelcomePageState extends State<WelcomePage> {
               //route to new page
               // Navigator.of(context).push(MaterialPageRoute(builder: (context) => MyHomePage()));
               Navigator.of(context)
-                  .pushNamedAndRemoveUntil("myHomePage", (route) => false);
+                  .pushNamedAndRemoveUntil("signIn", (route) => false);
             }
           },
           child: Container(
