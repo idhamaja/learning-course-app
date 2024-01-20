@@ -17,9 +17,15 @@ class SignInController {
         String emailAddress = state.email;
         String password = state.password;
 
-        if (emailAddress.isEmpty) {}
+        if (emailAddress.isEmpty) {
+          //
+          print("Email is EMPTY");
+        } else {
+          print("Email is ${emailAddress}");
+        }
         if (password.isEmpty) {
           //
+          print("Password EMPTY");
         }
         try {
           final credential =
@@ -29,16 +35,32 @@ class SignInController {
           );
 
           //
-          if (credential.user == null) {}
-          if (!credential.user!.emailVerified) {}
+          if (credential.user == null) {
+            //
+            print("User Does Not EXIST");
+          }
+          if (!credential.user!.emailVerified) {
+            //
+            print("User is NOT VERIFIED");
+          }
 
           var user = credential.user;
           if (user != null) {
             //Got verified user from Firebase
-          }else {
+            print("User EXIST");
+          } else {
             //Have error getting User from Firebase
+            print("No User");
           }
-        } catch (e) {}
+        } on FirebaseAuthException catch (e) {
+          if (e.code == 'user-not-found') {
+            print('No user found for that email.');
+          } else if (e.code == 'wrong-password') {
+            print('Wrong user provided for that user.');
+          } else if (e.code == 'invalid-email') {
+            print("Your email format is incorrect");
+          }
+        }
       }
     } catch (e) {}
   }
