@@ -48,7 +48,7 @@ class _WelcomePageState extends State<WelcomePage> {
                         "Next",
                         "Learning In The Beginning",
                         "Forget about a for of paper all knowledge in one learning.",
-                        "assets/images/reading.png",
+                        "assets/images/highschoolgirl1_fix.png",
                       ),
                       _welcomePage(
                         2,
@@ -56,7 +56,7 @@ class _WelcomePageState extends State<WelcomePage> {
                         "Next",
                         "Connect With Everyone",
                         "Alway keep in touch with your mentor & friends. Let's get connected!",
-                        "assets/images/boy.png",
+                        "assets/images/highschoolgirl2_fix.png",
                       ),
                       _welcomePage(
                         3,
@@ -64,7 +64,7 @@ class _WelcomePageState extends State<WelcomePage> {
                         "Get Started",
                         "Always Facinated Learning",
                         "Anytime, anywhere. The time is at your disrection so study whenever you want.",
-                        "assets/images/man.png",
+                        "assets/images/highschoolgirl3_fix.png",
                       ),
                     ],
                   ),
