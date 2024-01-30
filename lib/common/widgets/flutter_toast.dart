@@ -12,7 +12,7 @@ toastInfo({
     msg: msg,
     toastLength: Toast.LENGTH_SHORT,
     gravity: ToastGravity.TOP,
-    timeInSecForIosWeb: 2,
+    timeInSecForIosWeb: 4,
     backgroundColor: backgroundColor,
     textColor: textColor,
     fontSize: 16.sp,
