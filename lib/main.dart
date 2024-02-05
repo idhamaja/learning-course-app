@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:learning_course_app/common/values/colors.dart';
+import 'package:learning_course_app/pages/apps/application_page.dart';
 import 'package:learning_course_app/pages/bloc_providers.dart';
 import 'package:learning_course_app/pages/register/register_page.dart';
 import 'package:learning_course_app/pages/sign_in/sign_in.dart';
-import 'package:learning_course_app/pages/welcome/welcome.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
             elevation: 0,
             backgroundColor: Colors.white,
           )),
-          home: const WelcomePage(),
+          home: const ApplicationPage(),
           routes: {
             "signIn": (context) => const SignIn(),
             "register": (context) => const RegisterPage(),
