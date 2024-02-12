@@ -55,6 +55,8 @@ class SignInController {
           if (user != null) {
             //Got verified user from Firebase
             print("User EXIST");
+            Navigator.of(context)
+                .pushNamedAndRemoveUntil("/application", (route) => false);
           } else {
             //Have error getting User from Firebase
             print("No User");

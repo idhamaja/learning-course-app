@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:learning_course_app/common/routes/names.dart';
 import 'package:learning_course_app/pages/apps/application_page.dart';
+import 'package:learning_course_app/pages/apps/bloc/application_blocs.dart';
 import 'package:learning_course_app/pages/register/bloc/register_blocs.dart';
 import 'package:learning_course_app/pages/register/register_page.dart';
 import 'package:learning_course_app/pages/sign_in/bloc/signin_blocs.dart';
@@ -39,13 +40,13 @@ class AppPages {
       ),
 
       //
-      // PageEntity(
-      //   route: AppRoutes.APPLICATION,
-      //   page: const ApplicationPage(),
-      //   bloc: BlocProvider(
-      //     create: (_) => AppBlocs(),
-      //   ),
-      // ),
+      PageEntity(
+        route: AppRoutes.APPLICATION,
+        page: const ApplicationPage(),
+        bloc: BlocProvider(
+          create: (_) => ApplicationBlocs(),
+        ),
+      ),
     ];
   }
 
