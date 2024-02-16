@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:learning_course_app/common/values/colors.dart';
 import 'package:learning_course_app/pages/home/widgets/home_page_widgets.dart';
 
@@ -26,7 +25,7 @@ class _HomePageState extends State<HomePage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             homePageText(
-              "hello",
+              "Howdy",
               color: AppColors.primaryThreeElementText,
             ),
 
@@ -35,7 +34,12 @@ class _HomePageState extends State<HomePage> {
               "Idham Ganteng",
               color: AppColors.primaryText,
               top: 5,
-            )
+            ),
+            SizedBox(
+              height: 20.h,
+            ),
+            searchView(),
+            slidersMenuView(),
           ],
         ),
       ),
