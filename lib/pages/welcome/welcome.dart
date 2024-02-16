@@ -5,6 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:learning_course_app/common/values/colors.dart';
+import 'package:learning_course_app/common/values/constant.dart';
+import 'package:learning_course_app/global.dart';
 import 'package:learning_course_app/pages/welcome/bloc/welcome_blocs.dart';
 import 'package:learning_course_app/pages/welcome/bloc/welcome_events.dart';
 import 'package:learning_course_app/pages/welcome/bloc/welcome_states.dart';
@@ -154,6 +156,10 @@ class _WelcomePageState extends State<WelcomePage> {
             } else {
               //route to new page
               // Navigator.of(context).push(MaterialPageRoute(builder: (context) => MyHomePage()));
+              Global.storageService
+                  .setBool(AppConstant.STRORAGE_DEVICE_OPEN_FIRST_TIME, true);
+              print(
+                  "The value is ${Global.storageService.getDeviceFirstOpen()}");
               Navigator.of(context)
                   .pushNamedAndRemoveUntil("signIn", (route) => false);
             }

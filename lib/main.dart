@@ -8,7 +8,7 @@ import 'package:learning_course_app/global.dart';
 import 'common/routes/routes.dart';
 
 Future<void> main() async {
-  await global.init();
+  await Global.init();
   runApp(const MyApp());
 }
 
@@ -22,20 +22,15 @@ class MyApp extends StatelessWidget {
         builder: (context, child) => MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
-              appBarTheme: const AppBarTheme(
-            iconTheme: IconThemeData(
-              color: AppColors.primaryText,
+            appBarTheme: const AppBarTheme(
+              iconTheme: IconThemeData(
+                color: AppColors.primaryText,
+              ),
+              elevation: 0,
+              backgroundColor: Colors.white,
             ),
-            elevation: 0,
-            backgroundColor: Colors.white,
-          )),
-          // home: const WelcomePage(),
+          ),
           onGenerateRoute: AppPages.GenerateRouteSettings,
-          // initialRoute: "/",
-          // routes: {
-          //   "signIn": (context) => const SignIn(),
-          //   "register": (context) => const RegisterPage(),
-          // },
         ),
       ),
     );

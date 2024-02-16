@@ -4,7 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:learning_course_app/common/services/storage_services.dart';
 
-class global {
+class Global {
   static late StorageServices storageService;
   static Future init() async {
     WidgetsFlutterBinding.ensureInitialized();
