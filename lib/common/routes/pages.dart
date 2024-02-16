@@ -71,10 +71,20 @@ class AppPages {
         print(result.first.route);
         bool deviceFirstOpen = Global.storageService.getDeviceFirstOpen();
         if (result.first.route == AppRoutes.INITIALROUTE && deviceFirstOpen) {
-          print("second log");
-          // return MaterialPageRoute(
-          //     builder: (_) => const SignIn(), settings: settings);
+          //first check whether it open or not also check user has logged in or not
+          bool isLoggedIn = Global.storageService.getIsLoggedIn();
+          if (isLoggedIn) {
+            //if user has already logged in, go to application page
+            return MaterialPageRoute(
+              builder: (_) => const ApplicationPage(),
+              settings: settings,
+            );
+          }
+          //if user didn't logged in, go to Sign in page
+          return MaterialPageRoute(
+              builder: (_) => const SignIn(), settings: settings);
         }
+        //if user never opened it, go to onBoarding page
         return MaterialPageRoute(
             builder: (_) => result.first.page, settings: settings);
       }

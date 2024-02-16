@@ -23,19 +23,18 @@ class _HomePageState extends State<HomePage> {
           horizontal: 25.w,
         ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              margin: EdgeInsets.only(
-                top: 20.h,
-              ),
-              child: Text(
-                "Hello",
-                style: GoogleFonts.poppins(
-                  color: AppColors.primaryThreeElementText,
-                  fontSize: 24.sp,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+            homePageText(
+              "hello",
+              color: AppColors.primaryThreeElementText,
+            ),
+
+            //
+            homePageText(
+              "Idham Ganteng",
+              color: AppColors.primaryText,
+              top: 5,
             )
           ],
         ),

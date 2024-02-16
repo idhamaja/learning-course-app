@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:learning_course_app/common/values/constant.dart';
 import 'package:learning_course_app/common/widgets/flutter_toast.dart';
+import 'package:learning_course_app/global.dart';
 import 'package:learning_course_app/pages/sign_in/bloc/signin_blocs.dart';
 
 class SignInController {
@@ -55,6 +57,9 @@ class SignInController {
           if (user != null) {
             //Got verified user from Firebase
             print("User EXIST");
+            //Local Storage
+            Global.storageService
+                .setString(AppConstant.STORAGE_USER_TOKEN_KEY, "terserah");
             Navigator.of(context)
                 .pushNamedAndRemoveUntil("/application", (route) => false);
           } else {
