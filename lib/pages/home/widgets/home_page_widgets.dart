@@ -1,8 +1,12 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:learning_course_app/common/values/colors.dart';
+import 'package:learning_course_app/pages/home/bloc/home_page_blocs.dart';
+import 'package:learning_course_app/pages/home/bloc/home_page_events.dart';
+import 'package:learning_course_app/pages/home/bloc/home_page_states.dart';
 
 AppBar buildAppBar() {
   return AppBar(
@@ -151,7 +155,7 @@ Widget searchView() {
   );
 }
 
-Widget slidersMenuView() {
+Widget slidersMenuView(BuildContext context, HomePageStates state) {
   return Column(
     children: [
       Container(
@@ -159,6 +163,12 @@ Widget slidersMenuView() {
         width: 325.w,
         height: 160.h,
         child: PageView(
+          onPageChanged: (value) {
+            print(value.toString());
+            context.read<HomePageBlocs>().add(
+                  HomePageDots(value),
+                );
+          },
           children: [
             _slidersContainter(path: "assets/icons/Art.png"),
             _slidersContainter(path: "assets/icons/Image(1).png"),
@@ -166,18 +176,16 @@ Widget slidersMenuView() {
           ],
         ),
       ),
-      Container(
-        child: DotsIndicator(
-          dotsCount: 3,
-          position: 1,
-          decorator: DotsDecorator(
-            color: AppColors.primaryThreeElementText,
-            activeColor: AppColors.primaryElement,
-            size: const Size.square(5.0),
-            activeSize: const Size(17.0, 5.0),
-            activeShape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(5.0),
-            ),
+      DotsIndicator(
+        dotsCount: 3,
+        position: state.index,
+        decorator: DotsDecorator(
+          color: AppColors.primaryThreeElementText,
+          activeColor: AppColors.primaryElement,
+          size: const Size.square(5.0),
+          activeSize: const Size(17.0, 5.0),
+          activeShape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(5.0),
           ),
         ),
       ),
@@ -198,6 +206,35 @@ Widget _slidersContainter({String path = "assets/icons/Art.png"}) {
         image: AssetImage(
           path,
         ),
+      ),
+    ),
+  );
+}
+
+Widget menuCourseView() {
+  return Column(
+    children: [
+      Container(
+        width: 325.w,
+        margin: EdgeInsets.only(top: 15.h),
+        child: Row(
+          children: [
+            _reusableMenuCourseText(),
+          ],
+        ),
+      )
+    ],
+  );
+}
+
+Widget _reusableMenuCourseText() {
+  return Container(
+    child: Text(
+      "Choose your courses",
+      style: GoogleFonts.poppins(
+        color: AppColors.primaryText,
+        fontWeight: FontWeight.bold,
+        fontSize: 16.sp,
       ),
     ),
   );
