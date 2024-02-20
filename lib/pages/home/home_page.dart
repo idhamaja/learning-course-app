@@ -26,26 +26,61 @@ class _HomePageState extends State<HomePage> {
               vertical: 0,
               horizontal: 25.w,
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                homePageText(
-                  "Howdy",
-                  color: AppColors.primaryThreeElementText,
+            child: CustomScrollView(
+              slivers: [
+                SliverToBoxAdapter(
+                  child: homePageText(
+                    "Howdy",
+                    color: AppColors.primaryThreeElementText,
+                  ),
+                ),
+                //
+                SliverToBoxAdapter(
+                  child: homePageText(
+                    "Idham Ganteng",
+                    color: AppColors.primaryText,
+                    top: 5,
+                  ),
+                ),
+                SliverPadding(
+                  padding: EdgeInsets.only(
+                    top: 20.h,
+                  ),
+                ),
+                SliverToBoxAdapter(
+                  child: searchView(),
+                ),
+                SliverToBoxAdapter(
+                  child: slidersMenuView(context, state),
+                ),
+                SliverToBoxAdapter(
+                  child: menuCourseView(),
                 ),
 
-                //
-                homePageText(
-                  "Idham Ganteng",
-                  color: AppColors.primaryText,
-                  top: 5,
+                SliverPadding(
+                  padding: EdgeInsets.symmetric(
+                    vertical: 18.h,
+                    horizontal: 0.w,
+                  ),
+                  sliver: SliverGrid(
+                    delegate: SliverChildBuilderDelegate(
+                      childCount: 4,
+                      (BuildContext context, int index) {
+                        return GestureDetector(
+                          onTap: () {},
+                          child: courseMenurGrid(),
+                        );
+                      },
+                    ),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 15,
+                      crossAxisSpacing: 15,
+                      childAspectRatio: 1.6,
+                    ),
+                  ),
                 ),
-                SizedBox(
-                  height: 20.h,
-                ),
-                searchView(),
-                slidersMenuView(context, state),
-                menuCourseView(),
               ],
             ),
           );

@@ -218,8 +218,35 @@ Widget menuCourseView() {
         width: 325.w,
         margin: EdgeInsets.only(top: 15.h),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            _reusableMenuCourseText(),
+            _reusableText("Choose your courses"),
+            GestureDetector(
+              child: _reusableText(
+                "See all",
+                color: AppColors.primaryThreeElementText,
+                fontSize: 10,
+              ),
+            )
+          ],
+        ),
+      ),
+      Container(
+        margin: EdgeInsets.only(top: 20.w),
+        child: Row(
+          children: [
+            _reusableMenuText("All"),
+            _reusableMenuText(
+              "Popular",
+              textColor: AppColors.primaryThreeElementText,
+              backgroundColor: Colors.white,
+            ),
+            _reusableMenuText(
+              "Newest",
+              textColor: AppColors.primaryThreeElementText,
+              backgroundColor: Colors.white,
+            ),
           ],
         ),
       )
@@ -227,15 +254,95 @@ Widget menuCourseView() {
   );
 }
 
-Widget _reusableMenuCourseText() {
+Widget _reusableText(
+  String text, {
+  Color color = AppColors.primaryText,
+  int fontSize = 16,
+  FontWeight fontWeight = FontWeight.bold,
+}) {
+  return Text(
+    text,
+    style: GoogleFonts.poppins(
+      color: color,
+      fontWeight: fontWeight,
+      fontSize: fontSize.sp,
+    ),
+  );
+}
+
+//for the Menu Buttons, reusable text
+Widget _reusableMenuText(
+  String menuText, {
+  Color textColor = AppColors.primaryElementText,
+  Color backgroundColor = AppColors.primaryElement,
+}) {
   return Container(
-    child: Text(
-      "Choose your courses",
-      style: GoogleFonts.poppins(
-        color: AppColors.primaryText,
-        fontWeight: FontWeight.bold,
-        fontSize: 16.sp,
+    margin: EdgeInsets.only(right: 20.w),
+    decoration: BoxDecoration(
+      color: backgroundColor,
+      borderRadius: BorderRadius.circular(7.w),
+      border: Border.all(color: backgroundColor),
+    ),
+    padding: EdgeInsets.only(
+      left: 15.w,
+      right: 15.w,
+      top: 5.h,
+      bottom: 5.h,
+    ),
+    child: _reusableText(
+      menuText,
+      color: textColor,
+      fontSize: 11,
+      fontWeight: FontWeight.normal,
+    ),
+  );
+}
+
+//for course menu grid view UI
+Widget courseMenurGrid() {
+  return Container(
+    padding: EdgeInsets.all(12.w),
+    width: 100,
+    height: 100,
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(15.w),
+      image: const DecorationImage(
+        fit: BoxFit.fill,
+        image: AssetImage(
+          "assets/icons/Image(2).png",
+        ),
       ),
+    ),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "Best Course For IT and Engineering",
+          maxLines: 1,
+          overflow: TextOverflow.fade,
+          textAlign: TextAlign.left,
+          softWrap: false,
+          style: GoogleFonts.poppins(
+            color: AppColors.primaryElementText,
+            fontWeight: FontWeight.bold,
+            fontSize: 11.sp,
+          ),
+        ),
+        SizedBox(height: 5.h),
+        Text(
+          "Flutter Best Course",
+          maxLines: 1,
+          overflow: TextOverflow.fade,
+          textAlign: TextAlign.left,
+          softWrap: false,
+          style: GoogleFonts.poppins(
+            color: AppColors.primaryFourElementText,
+            fontWeight: FontWeight.normal,
+            fontSize: 9.sp,
+          ),
+        ),
+      ],
     ),
   );
 }
