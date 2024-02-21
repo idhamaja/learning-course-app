@@ -27,4 +27,8 @@ class StorageServices {
         ? false
         : true;
   }
+
+  Future<bool> remove(String key) {
+    return _prefs.remove(key);
+  }
 }

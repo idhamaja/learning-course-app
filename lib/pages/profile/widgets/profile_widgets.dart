@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:learning_course_app/common/routes/names.dart';
 import 'package:learning_course_app/common/values/colors.dart';
+import 'package:learning_course_app/common/widgets/base_text_widget.dart';
 
 AppBar buildAppBarProfile() {
   return AppBar(
@@ -14,14 +16,7 @@ AppBar buildAppBarProfile() {
             height: 12.h,
             child: Image.asset("assets/icons/menu.png"),
           ),
-          Text(
-            "Profile",
-            style: GoogleFonts.poppins(
-              color: AppColors.primaryText,
-              fontWeight: FontWeight.bold,
-              fontSize: 16.sp,
-            ),
-          ),
+          reusableText("Profile"),
           SizedBox(
             width: 24.w,
             height: 24.h,
@@ -66,13 +61,22 @@ var imagesInfo = <String, String>{
   "Love": "heart(1).png",
   "Reminders": "cube.png",
 };
+
+// void func() {
+//   print("onTapped");
+// }
+
 //settings Section Button
-Widget buildListViewSettings() {
+Widget buildListViewSettings(BuildContext context) {
   return Column(
     children: [
       ...List.generate(
         imagesInfo.length,
         (index) => GestureDetector(
+          onTap: () => Navigator.of(context).pushNamed(AppRoutes.SETTINGS),
+          // onTap: () {
+          //   func();
+          // },
           child: Container(
             margin: EdgeInsets.only(bottom: 15.h),
             child: Row(

@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:learning_course_app/common/values/colors.dart';
+import 'package:learning_course_app/common/widgets/base_text_widget.dart';
 import 'package:learning_course_app/pages/home/bloc/home_page_blocs.dart';
 import 'package:learning_course_app/pages/home/bloc/home_page_events.dart';
 import 'package:learning_course_app/pages/home/bloc/home_page_states.dart';
@@ -221,9 +222,9 @@ Widget menuCourseView() {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            _reusableText("Choose your courses"),
+            reusableText("Choose your courses"),
             GestureDetector(
-              child: _reusableText(
+              child: reusableText(
                 "See all",
                 color: AppColors.primaryThreeElementText,
                 fontSize: 10,
@@ -254,22 +255,6 @@ Widget menuCourseView() {
   );
 }
 
-Widget _reusableText(
-  String text, {
-  Color color = AppColors.primaryText,
-  int fontSize = 16,
-  FontWeight fontWeight = FontWeight.bold,
-}) {
-  return Text(
-    text,
-    style: GoogleFonts.poppins(
-      color: color,
-      fontWeight: fontWeight,
-      fontSize: fontSize.sp,
-    ),
-  );
-}
-
 //for the Menu Buttons, reusable text
 Widget _reusableMenuText(
   String menuText, {
@@ -289,7 +274,7 @@ Widget _reusableMenuText(
       top: 5.h,
       bottom: 5.h,
     ),
-    child: _reusableText(
+    child: reusableText(
       menuText,
       color: textColor,
       fontSize: 11,
