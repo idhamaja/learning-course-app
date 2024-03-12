@@ -1,6 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:learning_course_app/common/apis/user_api.dart';
+import 'package:learning_course_app/common/entities/entities.dart';
 import 'package:learning_course_app/common/values/constant.dart';
 import 'package:learning_course_app/common/widgets/flutter_toast.dart';
 import 'package:learning_course_app/global.dart';
@@ -55,13 +59,31 @@ class SignInController {
 
           var user = credential.user;
           if (user != null) {
+            //Got it from Google
+            String? displayName = user.displayName;
+            String? email = user.email;
+            String? id = user.uid;
+            String? photoUrl = user.photoURL;
+
+            print("My URL IS ${photoUrl}");
+
+            LoginRequestEntity loginRequestEntity = LoginRequestEntity();
+            loginRequestEntity.avatar = photoUrl;
+            loginRequestEntity.name = displayName;
+            loginRequestEntity.email = email;
+            loginRequestEntity.open_id = id;
+            loginRequestEntity.type = 1;
+
             //Got verified user from Firebase
             print("User EXIST");
+
+            //
+            asyncPostAllData(loginRequestEntity);
             //Local Storage
-            Global.storageService
-                .setString(AppConstant.STORAGE_USER_TOKEN_KEY, "terserah");
-            Navigator.of(context)
-                .pushNamedAndRemoveUntil("/application", (route) => false);
+            // Global.storageService
+            //     .setString(AppConstant.STORAGE_USER_TOKEN_KEY, "terserah");
+            // Navigator.of(context)
+            //     .pushNamedAndRemoveUntil("/application", (route) => false);
           } else {
             //Have error getting User from Firebase
             print("No User");
@@ -82,5 +104,15 @@ class SignInController {
         }
       }
     } catch (e) {}
+  }
+
+  //
+  Future<void> asyncPostAllData(LoginRequestEntity loginRequestEntity) async {
+    EasyLoading.show(
+      indicator: CircularProgressIndicator(),
+      maskType: EasyLoadingMaskType.clear,
+      dismissOnTap: true,
+    );
+    var result = await UserAPI.login(params: loginRequestEntity);
   }
 }
