@@ -44,7 +44,6 @@ class RegisterController {
         //UPLOAD PHOTO URL
         String photoUrl = "${AppConstant.SERVER_API_URL}uploads/default.png";
         await credential.user?.updatePhotoURL(photoUrl);
-
         toastInfo(
             msg:
                 "Your email has been sent to your Registered Email. To activate it please check your email box and click on the link.");

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -79,11 +81,6 @@ class SignInController {
 
             //
             asyncPostAllData(loginRequestEntity);
-            //Local Storage
-            // Global.storageService
-            //     .setString(AppConstant.STORAGE_USER_TOKEN_KEY, "terserah");
-            // Navigator.of(context)
-            //     .pushNamedAndRemoveUntil("/application", (route) => false);
           } else {
             //Have error getting User from Firebase
             print("No User");
@@ -114,5 +111,30 @@ class SignInController {
       dismissOnTap: true,
     );
     var result = await UserAPI.login(params: loginRequestEntity);
+
+    //
+    if (result.code == 200) {
+      try {
+        //Local Storage
+        Global.storageService.setString(
+          AppConstant.STORAGE_USER_PROFILE_KEY,
+          jsonEncode(result.data!),
+        );
+        Global.storageService.setString(
+          AppConstant.STORAGE_USER_TOKEN_KEY,
+          result.data!.access_token,
+        );
+
+        EasyLoading.dismiss();
+
+        Navigator.of(context)
+            .pushNamedAndRemoveUntil("/application", (route) => false);
+      } catch (e) {
+        print("saving local error ${e.toString()}");
+      }
+    } else {
+      EasyLoading.dismiss();
+      toastInfo(msg: "unknown error");
+    }
   }
 }

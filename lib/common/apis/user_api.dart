@@ -8,6 +8,6 @@ class UserAPI {
       queryParameters: params?.toJson(),
     );
 
-    print(response.toString());
+    return UserLoginResponseEntity.fromJson(response);
   }
 }
