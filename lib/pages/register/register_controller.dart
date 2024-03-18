@@ -42,12 +42,11 @@ class RegisterController {
         await credential.user?.updateDisplayName(username);
 
         //UPLOAD PHOTO URL
-        String photoUrl = "${AppConstant.SERVER_API_URL}uploads/default.png";
+        String photoUrl = "${AppConstant.SERVER_API_URL}uploads/default.jpg";
         await credential.user?.updatePhotoURL(photoUrl);
         toastInfo(
             msg:
                 "Your email has been sent to your Registered Email. To activate it please check your email box and click on the link.");
-
         Navigator.of(context).pop();
       }
     } on FirebaseAuthException catch (e) {
