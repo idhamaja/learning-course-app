@@ -61,7 +61,7 @@ class UserItem {
   String? description;
   String? avatar;
   int? online;
-  String? type;
+  int? type;
 
   UserItem({
     this.access_token,
@@ -80,7 +80,7 @@ class UserItem {
         description: json["description"],
         avatar: json["avatar"],
         online: json["online"],
-        type: json["type"].toString(),
+        type: json["type"],
       );
 
   Map<String, dynamic> toJson() => {

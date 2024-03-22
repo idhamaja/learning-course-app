@@ -25,15 +25,16 @@ class HttpUtil {
   //
   Future post(
     String path, {
-    dynamic data,
+    dynamic myData,
     Map<String, dynamic>? queryParameters,
   }) async {
     var response = await dio.post(
       path,
-      data: data,
+      data: myData,
       queryParameters: queryParameters,
     );
     print("My Response Data is ${response.toString()}");
+    print("My Status Code id ${response.statusCode}");
     return response.data;
   }
 }

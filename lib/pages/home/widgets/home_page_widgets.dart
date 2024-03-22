@@ -4,12 +4,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:learning_course_app/common/values/colors.dart';
+import 'package:learning_course_app/common/values/constant.dart';
 import 'package:learning_course_app/common/widgets/base_text_widget.dart';
 import 'package:learning_course_app/pages/home/bloc/home_page_blocs.dart';
 import 'package:learning_course_app/pages/home/bloc/home_page_events.dart';
 import 'package:learning_course_app/pages/home/bloc/home_page_states.dart';
 
-AppBar buildAppBar() {
+AppBar buildAppBar(String avatar) {
   return AppBar(
     title: Container(
       margin: EdgeInsets.only(
@@ -31,11 +32,9 @@ AppBar buildAppBar() {
             child: Container(
               width: 40.w,
               height: 40.h,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage(
-                    "assets/icons/person.png",
-                  ),
+                  image: NetworkImage("${AppConstant.SERVER_API_URL}$avatar"),
                 ),
               ),
             ),

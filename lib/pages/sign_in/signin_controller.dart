@@ -120,9 +120,7 @@ class SignInController {
             AppConstant.STORAGE_USER_PROFILE_KEY, jsonEncode(result.data!));
         Global.storageService.setString(
             AppConstant.STORAGE_USER_TOKEN_KEY, result.data!.access_token);
-
         EasyLoading.dismiss();
-
         Navigator.of(context)
             .pushNamedAndRemoveUntil("/application", (route) => false);
       } catch (e) {
