@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:learning_course_app/common/apis/course_api.dart';
 import 'package:learning_course_app/common/entities/entities.dart';
 import 'package:learning_course_app/global.dart';
 
@@ -7,7 +8,8 @@ class HomeController {
   UserItem? userProfile = Global.storageService.getUserProfile();
   HomeController({required this.context});
 
-  void init() {
-    print("... Home Controller init method...");
+  Future<void> init() async {
+    // print("... Home Controller init method...");
+    await CourseAPI.courseList();
   }
 }

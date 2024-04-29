@@ -35,6 +35,11 @@ class StorageServices {
     return _prefs.remove(key);
   }
 
+  //method for return the token
+  String getUserToken() {
+    return _prefs.getString(AppConstant.STORAGE_USER_TOKEN_KEY) ?? "";
+  }
+
   //getUserProfileMethod
   UserItem? getUserProfile() {
     var profileOffline =
