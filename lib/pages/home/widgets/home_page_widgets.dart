@@ -34,6 +34,7 @@ AppBar buildAppBar(String avatar) {
               height: 40.h,
               decoration: BoxDecoration(
                 image: DecorationImage(
+                  //image Profile
                   image: NetworkImage("${AppConstant.SERVER_API_URL}$avatar"),
                 ),
               ),
