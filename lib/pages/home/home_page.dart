@@ -75,11 +75,11 @@ class _HomePageState extends State<HomePage> {
                         ),
                         sliver: SliverGrid(
                           delegate: SliverChildBuilderDelegate(
-                            childCount: 4,
+                            childCount: state.courseItem.length,
                             (BuildContext context, int index) {
                               return GestureDetector(
                                 onTap: () {},
-                                child: courseMenurGrid(),
+                                child: courseMenurGrid(state.courseItem[index]),
                               );
                             },
                           ),
