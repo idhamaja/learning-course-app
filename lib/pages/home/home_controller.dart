@@ -17,7 +17,10 @@ class HomeController {
       // print("... Home Controller init method...");
       var result = await CourseAPI.courseList();
       if (result.code == 200) {
-        context.read<HomePageBlocs>().add(HomePageCourseItem(result.data!));
+        //trigger event
+        if (context.mounted) {
+          context.read<HomePageBlocs>().add(HomePageCourseItem(result.data!));
+        }
         // print("Perfect!!!");
         // print(result.data![0].name);
       } else {

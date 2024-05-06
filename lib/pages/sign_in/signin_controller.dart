@@ -123,8 +123,11 @@ class SignInController {
         Global.storageService.setString(
             AppConstant.STORAGE_USER_TOKEN_KEY, result.data!.access_token);
         EasyLoading.dismiss();
-        Navigator.of(context)
-            .pushNamedAndRemoveUntil("/application", (route) => false);
+
+        if (context.mounted) {
+          Navigator.of(context)
+              .pushNamedAndRemoveUntil("/application", (route) => false);
+        }
       } catch (e) {
         print("saving local error ${e.toString()}");
       }

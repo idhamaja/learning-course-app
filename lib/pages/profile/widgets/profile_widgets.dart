@@ -41,7 +41,7 @@ Widget profileIconandEditButton() {
       borderRadius: BorderRadius.circular(20.h),
       image: const DecorationImage(
         image: AssetImage(
-          "assets/icons/headpic.png",
+          "assets/icons/iconDua.jpeg",
         ),
       ),
     ),
