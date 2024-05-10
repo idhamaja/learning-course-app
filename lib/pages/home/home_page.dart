@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:learning_course_app/common/routes/names.dart';
 import 'package:learning_course_app/common/values/colors.dart';
 import 'package:learning_course_app/pages/home/bloc/home_page_blocs.dart';
 import 'package:learning_course_app/pages/home/bloc/home_page_states.dart';
@@ -78,7 +79,14 @@ class _HomePageState extends State<HomePage> {
                             childCount: state.courseItem.length,
                             (BuildContext context, int index) {
                               return GestureDetector(
-                                onTap: () {},
+                                onTap: () {
+                                  Navigator.of(context).pushNamed(
+                                      AppRoutes.COURSE_DETAIL,
+                                      arguments: {
+                                        "id":
+                                            state.courseItem.elementAt(index).id
+                                      });
+                                },
                                 child: courseMenurGrid(state.courseItem[index]),
                               );
                             },
