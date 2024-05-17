@@ -21,8 +21,8 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    _homeController = HomeController(context: context);
-    _homeController.init();
+    // _homeController = HomeController(context: context);
+    // _homeController.init();
   }
 
   @override
