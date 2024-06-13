@@ -7,9 +7,9 @@ import 'package:learning_course_app/pages/profile/profile_page.dart';
 Widget buildPage(int index) {
   List<Widget> _widget = [
     const HomePage(),
-    Center(child: Text("Search Page")),
-    Center(child: Text("Course Page")),
-    Center(child: Text("Chat Page")),
+    const Center(child: Text("Search Page")),
+    const Center(child: Text("Course Page")),
+    const Center(child: Text("Chat Page")),
     const ProfilePage(),
   ];
 

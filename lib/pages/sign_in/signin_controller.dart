@@ -10,6 +10,7 @@ import 'package:learning_course_app/common/entities/entities.dart';
 import 'package:learning_course_app/common/values/constant.dart';
 import 'package:learning_course_app/common/widgets/flutter_toast.dart';
 import 'package:learning_course_app/global.dart';
+import 'package:learning_course_app/pages/home/home_controller.dart';
 import 'package:learning_course_app/pages/sign_in/bloc/signin_blocs.dart';
 
 class SignInController {
@@ -78,6 +79,10 @@ class SignInController {
 
             //Got verified user from Firebase
             print("User EXIST");
+            await asyncPostAllData(loginRequestEntity);
+            if (context.mounted) {
+              await HomeController(context: context).init();
+            }
 
             //
             asyncPostAllData(loginRequestEntity);
